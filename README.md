@@ -1,7 +1,9 @@
 # AlphaCAMM
 
-Implements all the necesary submodules for AlphaCAMM simulations and analysis.
-
+Implements all the necesary submodules for AlphaCAMM simulations and analysis. To clone this proyect do not forget to append `--recusive`
+```
+git clone git@lfna.unizar.es:gifna/AlphaCAMM.git --recursive
+```
 
 ## Simulations
 
