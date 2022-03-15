@@ -1,0 +1,12 @@
+[submodule "alphacamm-readouts"]
+	path = alphacamm-readouts
+	url = git@lfna.unizar.es:gifna/alphacamm-readouts.git
+[submodule "alphacamm-simulations"]
+	path = alphacamm-simulations
+	url = git@lfna.unizar.es:gifna/alphacamm-simulations.git
+[submodule "alphacamm-analysis"]
+	path = alphacamm-analysis
+	url = git@lfna.unizar.es:gifna/alphacamm-analysis.git
+[submodule "alphacamm-geometry"]
+	path = alphacamm-geometry
+	url = git@lfna.unizar.es:gifna/alphacamm-geometry.git
