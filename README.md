@@ -2,7 +2,7 @@
 
 Implements all the necesary submodules for AlphaCAMM simulations and analysis. To clone this proyect do not forget to append `--recusive`
 ```
-git clone git@lfna.unizar.es:gifna/AlphaCAMM.git --recursive
+git clone git@github.com:trex-dm/AlphaCAMM.git --recursive
 ```
 
 ## Simulations
@@ -45,4 +45,4 @@ Afterwards you can run analysis/simulations using standard REST programs.
 
 
 
-**? WARNING: REST is under continous development.** This README is offered to you by the REST community. Your HELP is needed to keep this file up to date. You are very welcome to contribute fixing typos, updating information or adding new contributions. See also our [Contribution Guide](https://lfna.unizar.es/rest-development/REST_v2/-/blob/master/CONTRIBUTING.md).
+** WARNING: REST is under continous development.** This README is offered to you by the REST community. Your HELP is needed to keep this file up to date. You are very welcome to contribute fixing typos, updating information or adding new contributions. See also our [Contribution Guide](https://lfna.unizar.es/rest-development/REST_v2/-/blob/master/CONTRIBUTING.md).
