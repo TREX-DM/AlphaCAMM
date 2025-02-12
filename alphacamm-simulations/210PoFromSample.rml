@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<restG4>
+
+   <globals file="common/globals.xml"/>  
+ 
+   <TRestRun file="common/run.xml" /> 
+
+    <TRestGeant4Metadata name="restG4 run"  title="Po210_from_SAMPLE">
+
+        <parameter name="gdml_file" value="geometry/setup.gdml"/>
+        <parameter name="subEventTimeDelay" value="100us" />
+
+        <parameter name="Nevents" value="${REST_NEVENTS}" />
+        <parameter name="saveAllEvents" value="false" />
+        <parameter name="printProgress" value="true" />
+
+        <generator type="surface" shape="wall" size="(155,155,0)" position="(0,0,110.005)" rotation="(0,0,0)" > 
+          <source particle="alpha" >
+            <!--angularDist type="flux" direction="(0,0,-1)"/-->
+            <angularDist type="isotropic"/>
+            <energyDist type="mono" energy="5.3" units="MeV" />
+          </source>
+        </generator>
+
+        <detector>
+            <parameter name="energyRange" value="(1,8)MeV"/>
+            <volume name="gas" sensitive="true" maxStepSize="0.01mm"/>
+        </detector>
+    </TRestGeant4Metadata>
+
+  <TRestGeant4PhysicsLists name="default" file="common/physics.xml" />
+
+</restG4>

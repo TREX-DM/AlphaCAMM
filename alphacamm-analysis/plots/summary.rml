@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<TRestManager name="alphaAnaVis" title="AlphaAnaVis" verboseLevel="info" >
+
+	<TRestAnalysisPlot name="restplot" title="Basic Plots" previewPlot="true" verboseLevel="info">
+
+		<canvas size="(1200,2800)" divide="(2,3)" save="R[fRunNumber]_plots.root"/>
+
+		<plot name="TrackOrigin" title="TrackOrigin" xlabel="X [mm]" ylabel="Y [mm]" logscale="false" save="" value="ON" stats="OFF" >
+			<variable name="alphaTrackAna_originX" range="(-129.6,129.6)" nbins="259" />
+			<variable name="alphaTrackAna_originY" range="(-129.6,129.6)" nbins="259" />
+		</plot>
+
+                <plot name="TrackEnd" title="TrackEnd" xlabel="X [mm]" ylabel="Y [mm]" logscale="false" save="" value="ON" stats="OFF" >
+			<variable name="alphaTrackAna_endX" range="(-129.6,129.6)" nbins="259" />
+			<variable name="alphaTrackAna_endY" range="(-129.6,129.6)" nbins="259" />
+		</plot>
+
+		<plot name="Spectra" title="Spectra" xlabel="Amplitude(ADC)" ylabel="Counts" 
+			legend="ON" logscale="false" value="ON" annotation="OFF" >
+			<histo name="SpectraDownwards">
+				<variable name="alphaTrackAna_totalEnergy" range="(0,1000000)" nbins="200" />
+				<cut variable="alphaTrackAna_downwards" condition="" value="ON" />
+			</histo>
+			<histo name="SpectraUpwards">
+				<variable name="alphaTrackAna_totalEnergy" range="(0,1000000)" nbins="200" />
+				<parameter name="lineColor" value="1" />
+				<cut variable="!alphaTrackAna_downwards" condition="" value="ON" />
+			</histo>
+		</plot>
+
+		<plot name="TrackLengthEn" title="TrackLengthEn" xlabel="Length (mm)" ylabel="Amplitude (ADC)" logscale="false" save="" value="ON" stats="OFF" >
+			<variable name="alphaTrackAna_length" range="(0,100)" nbins="100" />
+			<variable name="alphaTrackAna_totalEnergy" range="(0,1000000)" nbins="100" />
+		</plot>
+		
+		<plot name="TrackAngle" title="TrackAngle" xlabel="Angle (rad)" ylabel="Counts" logscale="false" save="" value="ON" stats="OFF" >
+			<variable name="alphaTrackAna_angle" range="(0,3.142)" nbins="100" />
+		</plot>
+
+                <plot name="Rate" title="Rate" xlabel="Date/time" ylabel="Rate (Hz)" 
+                        legend="ON" logscale="false" value="ON" scale="binSize" timeDisplay="ON" >
+                        <histo name="RateDownwards">
+                                <variable name="timeStamp" range="" nbins="100" />
+                                <cut variable="alphaTrackAna_downwards" condition="" value="ON" />
+                        </histo>
+                        <histo name="RateUpwards">
+                                <variable name="timeStamp" range="" nbins="100" />
+                                <parameter name="lineColor" value="1" />
+                                <cut variable="!alphaTrackAna_downwards" condition="" value="ON" />
+                                
+                        </histo>
+                </plot>
+
+	</TRestAnalysisPlot>
+
+	<addTask command="restplot->PlotCombinedCanvas()" value="ON"/>
+
+</TRestManager>
+
+<!--paramater here is accessible to all the classes-->

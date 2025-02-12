@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<TRestManager>
+
+    <globals file="common/globals.xml"/>
+
+    <TRestRun file="common/run.xml" outputFileName="Run[fRunNumber]_[fRunTag]_ANA.root" />
+
+    <TRestProcessRunner name="alphaAna" verboseLevel="info">
+        <parameter name="eventsToProcess" value="0"/>
+        <parameter name="threadNumber" value="1"/>
+
+        <parameter name="inputAnalysisStorage" value="on"/>
+        <parameter name="inputEventStorage" value="on"/>
+        <parameter name="outputEventStorage" value="on"/>
+
+	<addProcess type="TRestRawToDetectorSignalProcess" name="zS" value="ON"
+                triggerStarts="0"
+                gain="1"
+                threshold="100"
+                zeroSuppression="true"
+                baseLineRange="(20,140)"
+                integralRange="(150,450)"
+                pointThreshold="1.5"
+                signalThreshold="2.5"
+                nPointsOverThreshold="7"
+                observable="all"/>
+
+	<addProcess type="TRestDetectorSignalToHitsProcess" name="signalToHits" value="ON" verboseLevel="info" 
+                observable="all"
+                method="intwindow"
+                intWindow="5.*${SAMPLING}"
+                threshold="100"/>
+
+	<addProcess type="TRestDetectorHitsToTrackProcess" name="hitsToTrack" title="" value="ON" 
+		clusterDistance="3.0mm" />
+
+	<addProcess type="TRestTrackLinearizationProcess" name="trackToLine" title="" value="ON" verboseLevel="info" 
+		maxNodes="6" />
+
+	<addProcess type="TRestTrackLineAnalysisProcess" name="alphaTrackAna" value="ON">
+               <parameter name="trackBalance" value="0.50" />
+               <observable name="originX" value="ON" />
+               <observable name="originY" value="ON" />
+               <observable name="originZ" value="ON" />
+               <observable name="endX" value="ON" />
+               <observable name="endY" value="ON" />
+               <observable name="endZ" value="ON" />
+               <observable name="length" value="ON" />
+               <observable name="angle" value="ON" />
+               <observable name="downwards" type="bool" value="ON" />
+               <observable name="totalEnergy" value="ON" />
+	</addProcess>
+		
+    </TRestProcessRunner>
+
+    <addTask type="processEvents" value="ON"/>
+
+</TRestManager>
+

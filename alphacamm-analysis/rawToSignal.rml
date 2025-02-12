@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<TRestManager>
+
+	<globals file="globals.xml"/>
+
+	<TRestRun file="run.xml" />
+
+	<TRestProcessRunner name="Signals" title="RawToSignal." verboseLevel="info"> 
+
+		<parameter name="threadNumber" value="1"/>
+   
+		<addProcess type="TRestRawMultiFEMINOSToSignalProcess" name="virtualDAQ" value="ON">
+			<parameter name="pedScript" value="ped"/>
+			<parameter name="runScript" value="run"/>
+        <!--<parameter name="electronics" value="SingleFeminos"/>-->
+			<parameter name="electronics" value="TCMFeminos"/>
+			<parameter name="fileFormat" value="SJTU" />
+		</addProcess>
+
+       </TRestProcessRunner>
+
+	<addTask type="processEvents" value="ON" />
+    
+</TRestManager>

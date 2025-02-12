@@ -1,0 +1,13 @@
+
+    <globals>
+        <variable name="EXPERIMENT" value="AlphaCAMM" overwrite="false"/>
+        <parameter name="mainDataPath" value="${REST_DATA_PATH}"/>
+        <parameter name="verboseLevel" value="warning"/>
+        %options are : essential silent, warning, info, debug
+
+	<variable name="SAMPLING" value="80ns" />
+	<parameter name="sampling" value="${SAMPLING}" />
+	<parameter name="driftVelocity" value="3.34mm/us" />
+	<parameter name="electricField" value="100" units="V/cm" />
+	<parameter name="gasPressure" value="1.05" />
+    </globals>
