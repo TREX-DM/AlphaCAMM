@@ -30,7 +30,7 @@
        	<subtraction name="bottomSolid">
             <first ref="bottomSolid1"/>
             <second ref="readoutSolid"/>
-	    <position name="bottomSub"  x="0" y="0" z="vessel_thickness*0.5-readout_thickness*0.5"/>
+	    <position name="bottomSub" unit="mm" x="0" y="0" z="vessel_thickness*0.5-readout_thickness*0.5"/>
        </subtraction>
 
 <!-- The cathode : To do substract cathode window-->
@@ -339,7 +339,7 @@
       <subtraction name="gasSolid">
             <first ref="gasSolid1"/>
             <second ref="windowSolid"/>
-	    <position name="gasSub1"  x="0" y="0" z="0.5*gas_length - 0.5*window_thickness"/>
+	    <position name="gasSub1" unit="mm" x="0" y="0" z="0.5*gas_length - 0.5*window_thickness"/>
        </subtraction>
 
 <!-- UpperVessel -->
@@ -347,7 +347,7 @@
         <subtraction name="gasUpperSolid">
             <first ref="gasUpperSolid1"/>
             <second ref="mylarSolid"/>
-	    <position name="gasSub2"  x="0" y="0" z="-0.5*gasUpperVesselLength + 0.5*mylar_thickness"/>
+	    <position name="gasSub2" unit="mm" x="0" y="0" z="-0.5*gasUpperVesselLength + 0.5*mylar_thickness"/>
        </subtraction>
 
 </solids>
@@ -418,22 +418,22 @@
 
         <physvol name="vessel">
             <volumeref ref="vesselVolume"/>
-            <position name="vesselPosition"  x="0" y="0" z="0.5*VesselLength"/>
+            <position name="vesselPosition" unit="mm" x="0" y="0" z="0.5*VesselLength"/>
         </physvol>
 
         <physvol name="bottom">
             <volumeref ref="bottomVolume"/>
-            <position name="bottomPosition"  x="0" y="0" z="vessel_thickness*0.5"/>
+            <position name="bottomPosition" unit="mm" x="0" y="0" z="vessel_thickness*0.5"/>
         </physvol>
 
         <physvol name="gas">
             <volumeref ref="gasVolume"/>
-            <position name="gasPosition"  x="0" y="0" z="0.5*gas_length+vessel_thickness"/>
+            <position name="gasPosition" unit="mm" x="0" y="0" z="0.5*gas_length+vessel_thickness"/>
         </physvol>
         
         <physvol name="cover">
             <volumeref ref="coverVolume"/>
-            <position name="coverPosition"  x="0" y="0" z="VesselLength+UpperVesselLength-0.5*vessel_thickness"/>
+            <position name="coverPosition" unit="mm" x="0" y="0" z="VesselLength+UpperVesselLength-0.5*vessel_thickness"/>
         </physvol>
         
         <physvol name="cathode">
@@ -453,12 +453,12 @@
 
         <physvol name="gas2">
             <volumeref ref="gasUpperVolume"/>
-            <position name="gasUpperPosition"  x="0" y="0" z="VesselLength+0.5*gasUpperVesselLength"/>
+            <position name="gasUpperPosition" unit="mm" x="0" y="0" z="VesselLength+0.5*gasUpperVesselLength"/>
         </physvol>
 
         <physvol name="vessel2">
             <volumeref ref="upperVesselVolume"/>
-            <position name="upperVesselPosition"  x="0" y="0" z="VesselLength+0.5*UpperVesselLength"/>
+            <position name="upperVesselPosition" unit="mm" x="0" y="0" z="VesselLength+0.5*UpperVesselLength"/>
         </physvol>
 
    </volume>
