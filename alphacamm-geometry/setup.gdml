@@ -39,7 +39,7 @@
         <constant name="windowYSize" value="250"/>
         <constant name="window_thickness" value="5"/>
 		<constant name="cathode_square_size" value="10"/>
-		<constant name="cathode_square_width" value="1"/>
+		<constant name="cathode_square_width" value="0.1"/>
 
         <position name="wirey_position_01r" unit="mm" x="0"  y="cathode_square_size*0.5" z="0"/>
 		<position name="wirey_position_02r" unit="mm" x="0"  y="cathode_square_size*1.5" z="0"/>
