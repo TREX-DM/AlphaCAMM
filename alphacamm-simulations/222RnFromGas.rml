@@ -15,10 +15,10 @@
         <parameter name="saveAllEvents" value="false" />
         <parameter name="printProgress" value="true" />
 
-        <generator type="volume" from="gas" > 
-          <source particle="alpha" >
-            <angularDist type="isotropic"/>
-            <energyDist type="mono" energy="5.5" units="MeV" />
+        <generator type="volume" shape="gdml" from="gas">            
+          <source particle="Rn222" fullChain="off">
+              <angular type="isotropic"/>
+              <energy type="mono" energy="0keV"/>
           </source>
         </generator>
 
