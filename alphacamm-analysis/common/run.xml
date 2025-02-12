@@ -1,0 +1,16 @@
+
+   <TRestRun name="Process" title="AlphaCAMMAna">
+        <parameter name="experimentName" value="${EXPERIMENT}"/>
+        <parameter name="readOnly" value="false"/>
+        <parameter name="runNumber" value="preserve"/>
+        <parameter name="runTag" value="preserve"/>
+        <parameter name="runType" value="preserve"/>
+        <parameter name="runDescription" value=""/>
+        <parameter name="user" value="${USER}"/>
+        <parameter name="verboseLevel" value="1"/>
+        <parameter name="overwrite" value="off"/>
+        <parameter name="outputFileName" value="Run[fRunNumber]_[fRunTag].root" />
+
+	<addMetadata type="TRestDetectorReadout" name="alphaCAMMReadout" file="../readouts/AlphaCAMMReadout.root" />
+
+    </TRestRun>

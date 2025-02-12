@@ -1,0 +1,8 @@
+    <globals>
+        <variable name="VERSION" value="1.0" overwrite="false" />
+        <variable name="EXPERIMENT" value="ALPHACAMM" overwrite="false" />
+        <variable name="REST_NEVENTS" value="1000" overwrite="false" />
+        <parameter name="mainDataPath" value="${REST_DATA_PATH}" />
+        <parameter name="verboseLevel" value="warning" /> %options are : essential silent, warning, info, debug
+
+    </globals>

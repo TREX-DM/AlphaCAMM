@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<TRestManager>
+
+    <globals>
+
+    <parameter name="mainDataPath" value="${REST_DATA_PATH}"/>
+    <variable name="RUN_TYPE" value="trackViewer" overwrite="false" />
+
+    </globals>
+
+
+    <TRestRun name="Alphas" title="Alphas" verboseLevel="silent">
+	<parameter name="experiment" value="preserve"/>
+	<parameter name="runNumber" value="preserve"/>
+	
+	<parameter name="runType" value="preserve"/>
+	<parameter name="verboseLevel" value="0"/>
+	<parameter name="overwrite" value="off" />
+	<parameter name="outputFile" value="R[fRunNumber]_VIS.root" />
+	<parameter name="readOnly" value="false" />
+
+    </TRestRun>
+
+	<TRestProcessRunner name="TrackViewer" title="viewTracks"  verboseLevel="info">
+
+		<parameter name="firstEntry" value="0" />
+		<parameter name="lastEntry" value="0" />
+		<parameter name="eventsToProcess" value="0" />
+
+		<addProcess type="TRestTrackViewerProcess" name="tckViewer" value="ON" verboseLevel="silent">
+			<parameter name="drawOriginEnd" value="true"/>
+			<parameter name="drawHits" value="true"/>
+			<parameter name="canvasSize" value="(800,600)"/>
+		</addProcess>
+
+          </TRestProcessRunner>
+
+	<addTask type="processEvents" value="ON" />
+
+</TRestManager>

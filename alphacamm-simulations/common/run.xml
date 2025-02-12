@@ -1,0 +1,10 @@
+    <TRestRun name="AlphaCAMM" title="${EXPERIMENT} Version ${VERSION}.">
+        <parameter name="experiment" value="ALPHACAMM"/>
+        <parameter name="readOnly" value="false" />
+        <parameter name="runNumber" value="auto"/> <!-- Will be set by restG4ToSlurm/ToCondor.py -->
+        <parameter name="runDescription" value=""/>
+        <parameter name="user" value="${USER}"/>
+        <parameter name="verboseLevel" value="1"/>
+        <parameter name="overwrite" value="off" />
+        <parameter name="outputFileName" value="Run[fRunNumber]_[fRunType]_[fRunTag]_[fRunUser].root" />
+    </TRestRun>
