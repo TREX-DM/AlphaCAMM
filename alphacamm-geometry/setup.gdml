@@ -3,25 +3,17 @@
 
 <!DOCTYPE gdml [
 <!ENTITY geometry SYSTEM "geometry.gdml">
-<!ENTITY materials SYSTEM "https://sultan.unizar.es/materials/materials.xml">
+<!ENTITY materials SYSTEM "https://rest-for-physics.github.io/materials/rest.xml">
 ]>
 
 
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
 <!-- Definition of global variables -->
-        
-    <!-- Just an example of a simple cylinder geometry file : setup.gdml
-         This file just defines de parameters of the geometry.
-         The geometry it is defined in geometry/BoxGeometry.gdml
-         The materials are defined in geometry/materials.xml
-         Author :  G. Luzon    Date :Nov-2016     Edit :  A. Quintana  Date : Dic-2021
-    -->
-
 <!-- All values should be in mm -->
 
      <define>
-       <variable name="world_size" value="20000" />
+       <variable name="world_size" value="20000"/>
        <!-- The TPC gas target -->
        <variable name="targetGasDensity" value="1.61"/>
        <variable name="quencherFraction" value="0.02"/>
@@ -29,105 +21,38 @@
        <variable name="gasTemperature" value="300"/> <!-- K -->
        <variable name="gasPressure" value="1.05"/> <!-- bar -->
 
-       <!-- vessel definitions -->
+		<!-- Vessel -->
+        <constant name="vessel_thickness" value="5"/>   <!--in mm's -->
+		<constant name="vessel_radius" value="200"/> <!--internal radius-->
+		<constant name="vessel_inner_length" value="135"/>
 
-        <constant name="vessel_thickness" value="5" />   <!--in mm's -->
-	<constant name="VesselRadius" value="193" />
-	<constant name="VesselLength" value="110" />
-
-	<!-- Micromegas variables -->
-
+		<!-- Micromegas -->
     	<constant name="readout_thickness" value="1"/>
         <constant name="readout_size" value="250"/>
 
-        <!--Window/Cathode on top of the chamber  -->
+       	<!--Gas (sensitive volume) -->
+		<constant name="gas_length" value="60"/> 
 
-	<constant name="mylar_thickness" value="0.002"/>
-        <constant name="windowXSize" value="250"/>
-        <constant name="windowYSize" value="250"/>
-        <constant name="window_thickness" value="5"/>
-	<constant name="cathode_square_size" value="10"/>
-	<constant name="cathode_square_width" value="1"/>
+		<!--Sample -->
+		<constant name="sampleXSize" value="245"/>
+		<constant name="sampleYSize" value="245"/>
+		<constant name="sample_thickness" value="1"/>
 
-        <position name="wirey_position_01r" unit="mm" x="0"  y="cathode_square_size*0.5" z="0"/>
-	<position name="wirey_position_02r" unit="mm" x="0"  y="cathode_square_size*1.5" z="0"/>
-	<position name="wirey_position_03r" unit="mm" x="0" y="cathode_square_size*2.5" z="0"/>
-	<position name="wirey_position_04r" unit="mm" x="0" y="cathode_square_size*3.5" z="0" />
-	<position name="wirey_position_05r" unit="mm" x="0" y="cathode_square_size*4.5" z="0"/>
-	<position name="wirey_position_06r" unit="mm" x="0" y="cathode_square_size*5.5" z="0"/>
-	<position name="wirey_position_07r" unit="mm" x="0" y="cathode_square_size*6.5" z="0"/>
-	<position name="wirey_position_08r" unit="mm" x="0" y="cathode_square_size*7.5" z="0"/>
-	<position name="wirey_position_09r" unit="mm" x="0" y="cathode_square_size*8.5" z="0"/>
-	<position name="wirey_position_10r" unit="mm" x="0" y="cathode_square_size*9.5" z="0"/>
-	<position name="wirey_position_11r" unit="mm" x="0" y="cathode_square_size*10.5" z="0"/>
-	<position name="wirey_position_12r" unit="mm" x="0" y="cathode_square_size*11.5" z="0"/>
-        <position name="wirey_position_01l" unit="mm" x="0" y="-cathode_square_size*0.5" z="0"/>
-	<position name="wirey_position_02l" unit="mm" x="0" y="-cathode_square_size*1.5" z="0"/>
-	<position name="wirey_position_03l" unit="mm" x="0" y="-cathode_square_size*2.5" z="0"/>
-	<position name="wirey_position_04l" unit="mm" x="0" y="-cathode_square_size*3.5" z="0"/>
-	<position name="wirey_position_05l" unit="mm" x="0" y="-cathode_square_size*4.5" z="0"/>
-	<position name="wirey_position_06l" unit="mm" x="0" y="-cathode_square_size*5.5" z="0"/>
-	<position name="wirey_position_07l" unit="mm" x="0" y="-cathode_square_size*6.5" z="0"/>
-	<position name="wirey_position_08l" unit="mm" x="0" y="-cathode_square_size*7.5" z="0"/>
-	<position name="wirey_position_09l" unit="mm" x="0" y="-cathode_square_size*8.5" z="0"/>
-	<position name="wirey_position_10l" unit="mm" x="0" y="-cathode_square_size*9.5" z="0"/>
-	<position name="wirey_position_11l" unit="mm" x="0" y="-cathode_square_size*10.5" z="0"/>
-	<position name="wirey_position_12l" unit="mm" x="0" y="-cathode_square_size*11.5" z="0"/>
-	
-	<position name="wirex_position_01r" unit="mm" x="cathode_square_size*0.5"  y="0" z="0"/>
-	<position name="wirex_position_02r" unit="mm" x="cathode_square_size*1.5"  y="0" z="0"/>
-	<position name="wirex_position_03r" unit="mm" x="cathode_square_size*2.5" y="0" z="0"/>
-	<position name="wirex_position_04r" unit="mm" x="cathode_square_size*3.5" y="0" z="0" />
-	<position name="wirex_position_05r" unit="mm" x="cathode_square_size*4.5" y="0" z="0"/>
-	<position name="wirex_position_06r" unit="mm" x="cathode_square_size*5.5" y="0" z="0"/>
-	<position name="wirex_position_07r" unit="mm" x="cathode_square_size*6.5" y="0" z="0"/>
-	<position name="wirex_position_08r" unit="mm" x="cathode_square_size*7.5" y="0" z="0"/>
-	<position name="wirex_position_09r" unit="mm" x="cathode_square_size*8.5" y="0" z="0"/>
-	<position name="wirex_position_10r" unit="mm" x="cathode_square_size*9.5" y="0" z="0"/>
-	<position name="wirex_position_11r" unit="mm" x="cathode_square_size*10.5" y="0" z="0"/>
-	<position name="wirex_position_12r" unit="mm" x="cathode_square_size*11.5" y="0" z="0"/>
-        <position name="wirex_position_01l" unit="mm" x="-cathode_square_size*0.5" y="0" z="0"/>
-	<position name="wirex_position_02l" unit="mm" x="-cathode_square_size*1.5" y="0" z="0"/>
-	<position name="wirex_position_03l" unit="mm" x="-cathode_square_size*2.5" y="0" z="0"/>
-	<position name="wirex_position_04l" unit="mm" x="-cathode_square_size*3.5" y="0" z="0"/>
-	<position name="wirex_position_05l" unit="mm" x="-cathode_square_size*4.5" y="0" z="0"/>
-	<position name="wirex_position_06l" unit="mm" x="-cathode_square_size*5.5" y="0" z="0"/>
-	<position name="wirex_position_07l" unit="mm" x="-cathode_square_size*6.5" y="0" z="0"/>
-	<position name="wirex_position_08l" unit="mm" x="-cathode_square_size*7.5" y="0" z="0"/>
-	<position name="wirex_position_09l" unit="mm" x="-cathode_square_size*8.5" y="0" z="0"/>
-	<position name="wirex_position_10l" unit="mm" x="-cathode_square_size*9.5" y="0" z="0"/>
-	<position name="wirex_position_11l" unit="mm" x="-cathode_square_size*10.5" y="0" z="0"/>
-	<position name="wirex_position_12l" unit="mm" x="-cathode_square_size*11.5" y="0" z="0"/>
+        <!--Window/Cathode in the middle of the chamber  -->
+		<constant name="cathode_radius" value="200"/>
+		<constant name="cathode_thickness" value="0.5"/>
 
-        <!--Sample -->
-	<constant name="sampleXSize" value="245"/>
-	<constant name="sampleYSize" value="245"/>
-	<constant name="sample_thickness" value="1"/>
-	<constant name="gas_length" value="VesselLength-vessel_thickness" />
+		<!--Gas below cathode -->
+		<constant name="gas_below_length" value="vessel_inner_length-gas_length"/> 
 
-	<!-- Upper Vessel definitions -->
-	<constant name="UpperVesselLength" value="105" />	<!--in mm's -->
         <!-- Z Positions -->
-
-	<constant name="mylar_ZPosition" value="VesselLength+0.5*mylar_thickness"/>
-	<constant name="window_ZPosition" value="VesselLength-0.5*window_thickness"/>
-        <constant name="sample_ZPosition" value="VesselLength+0.5*sample_thickness"/>
-        <constant name="readout_ZPosition" value="vessel_thickness-0.5*readout_thickness" />
-
-	<position name="mylar_position" unit="mm" x="0" y="0" z="mylar_ZPosition"/>
-	<position name="sample_position" unit="mm" x="0" y="0" z="sample_ZPosition"/>
-        <position name="readout_position" unit="mm" x="0" y="0" z="readout_ZPosition" />
-        <position name="window_position" unit="mm" x="0" y="0" z="window_ZPosition" />
-        <position name="null_position" unit="mm" x="0" y="0" z="0" />
-
-	<constant name="gasUpperVesselLength" value="UpperVesselLength-vessel_thickness+window_thickness+mylar_thickness"/>
-
-       <!--Rotations -->
-
-       <rotation name="RotateY90" unit="deg" x="0" y="90" z="0"/>
-       <rotation name="RotateXY90" unit="deg" x="90" y="0" z="90"/>
-       <rotation name="RotateYZ270" unit="deg" x="0" y="90" z="90"/>
-
+		<constant name="vesselTopcover_ZPosition" value="0.5*gas_length+0.5*vessel_thickness"/>
+		<constant name="readout_ZPosition" value="0.5*gas_length+0.5*readout_thickness"/>
+		<constant name="cathode_ZPosition" value="-0.5*gas_length-0.5*cathode_thickness"/>
+		<constant name="sample_ZPosition" value="-0.5*gas_length+0.5*sample_thickness"/>
+		<constant name="gasbelow_ZPosition" value="-0.5*gas_length-0.5*gas_below_length"/>
+		<constant name="vesselBottomcover_ZPosition" value="-0.5*gas_length-gas_below_length-0.5*vessel_thickness"/>
+		<constant name="vessel_ZPosition" value="0.5*gas_length-0.5*vessel_inner_length"/>
     </define>
 
     &materials;

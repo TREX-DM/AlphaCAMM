@@ -2,353 +2,29 @@
 <solids>
     <box name="WorldSolid" x="world_size" y="world_size" z="world_size" lunit="mm"/>
     
-    <tube name="vesselSolid" startphi="0" deltaphi="360" rmin="VesselRadius-vessel_thickness" rmax="VesselRadius" z="VesselLength" aunit="deg" lunit="mm" />
-
-    <tube name="gasSolid1" startphi="0" deltaphi="360" rmin="0" rmax="VesselRadius-vessel_thickness" z="gas_length" aunit="deg" lunit="mm" />
-
-    <tube name="bottomSolid1" startphi="0" deltaphi="360" rmin="0" rmax="VesselRadius-vessel_thickness" z="vessel_thickness" aunit="deg" lunit="mm" />
-
-    <tube name="windowSolid0" startphi="0" deltaphi="360" rmin="0" rmax="VesselRadius-vessel_thickness" z="window_thickness" aunit="deg" lunit="mm" />
-
-    <box name="windowHole" x="windowXSize" y="windowYSize" z="window_thickness" lunit="mm"/>
-
-    <box name="wireX" x="windowXSize" y="cathode_square_width" z="window_thickness" lunit="mm"/>
-    <box name="wireY" x="cathode_square_width" y="windowYSize" z="window_thickness" lunit="mm"/>
-
-    <box name="mylarSolid" x="windowXSize" y="windowYSize" z="mylar_thickness" lunit="mm"/> 
-
     <box name="readoutSolid" x="readout_size" y="readout_size" z="readout_thickness" lunit="mm"/>
- 
-    <tube name="upperVesselSolid" startphi="0" deltaphi="360" rmin="VesselRadius-vessel_thickness" rmax="VesselRadius" z="UpperVesselLength" aunit="deg" lunit="mm" />
+    
+    <tube name="vesselSolid" startphi="0" deltaphi="360" rmin="vessel_radius" rmax="vessel_radius+vessel_thickness*2" z="vessel_inner_length" aunit="deg" lunit="mm"/>
+  
+    <tube name="vesselBottomcoverSolid" startphi="0" deltaphi="360" rmin="0" rmax="vessel_radius+vessel_thickness*2" z="vessel_thickness" aunit="deg" lunit="mm"/>
 
-    <tube name="gasUpperSolid1" startphi="0" deltaphi="360" rmin="0" rmax="VesselRadius-vessel_thickness" z="gasUpperVesselLength" aunit="deg" lunit="mm" />
+    <tube name="vesselTopcoverAuxSolid" startphi="0" deltaphi="360" rmin="0" rmax="vessel_radius+vessel_thickness*2" z="vessel_thickness" aunit="deg" lunit="mm"/>
 
-    <tube name="coverVesselSolid" startphi="0" deltaphi="360" rmin="0" rmax="VesselRadius -vessel_thickness" z="vessel_thickness" aunit="deg" lunit="mm" />
-
- <!-- The  vessel -->
-
-       	<subtraction name="bottomSolid">
-            <first ref="bottomSolid1"/>
+    <subtraction name="vesselTopcoverSolid">
+            <first ref="vesselTopcoverAuxSolid"/>
             <second ref="readoutSolid"/>
-	    <position name="bottomSub"  x="0" y="0" z="vessel_thickness*0.5-readout_thickness*0.5"/>
-       </subtraction>
+	    <position name="vesselcoverSub.position" z="-0.5*vessel_thickness+0.5*readout_thickness" unit="mm"/>
+    </subtraction>
 
-<!-- The cathode : To do substract cathode window-->
+    <tube name="gasSolid" startphi="0" deltaphi="360" rmin="0" rmax="vessel_radius" z="gas_length" aunit="deg" lunit="mm"/>
+    <tube name="gasbelowAuxSolid" startphi="0" deltaphi="360" rmin="0" rmax="vessel_radius" z="gas_below_length" aunit="deg" lunit="mm"/>
+    <tube name="cathodeSolid" startphi="0" deltaphi="360" rmin="0" rmax="cathode_radius" z="cathode_thickness" aunit="deg" lunit="mm"/>
 
-      <subtraction name="windowSolid1">
-            <first ref="windowSolid0"/>
-            <second ref="windowHole"/>
-	    <positionref ref="null_position"/>
-      </subtraction>
-
-   <!-- Add X wires-->
-
-      <union name="windowSolid2" >
-        <first ref="windowSolid1" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_01r" />
-       </union>
-       
-       <union name="windowSolid3" >
-        <first ref="windowSolid2" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_01l" />
-       </union>
-       
-       <union name="windowSolid4" >
-        <first ref="windowSolid3" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_02r" />
-       </union>
-       
-       <union name="windowSolid5" >
-        <first ref="windowSolid4" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_02l" />
-       </union>
-       
-       <union name="windowSolid6" >
-        <first ref="windowSolid5" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_03r" />
-       </union>
-       
-       <union name="windowSolid7" >
-        <first ref="windowSolid6" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_03l" />
-       </union>
-       
-       <union name="windowSolid8" >
-        <first ref="windowSolid7" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_04r" />
-       </union>
-       
-       <union name="windowSolid9" >
-        <first ref="windowSolid8" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_04l" />
-       </union>
-       
-       <union name="windowSolid10" >
-        <first ref="windowSolid9" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_05r" />
-       </union>
-       
-       <union name="windowSolid11" >
-        <first ref="windowSolid10" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_05l" />
-       </union>
-       
-       <union name="windowSolid12" >
-        <first ref="windowSolid11" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_06r" />
-       </union>
-
-      <union name="windowSolid13" >
-        <first ref="windowSolid12" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_06l" />
-       </union>
-       
-       <union name="windowSolid14" >
-        <first ref="windowSolid13" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_07r" />
-       </union>
-       
-       <union name="windowSolid15" >
-        <first ref="windowSolid14" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_07l" />
-       </union>
-       
-       <union name="windowSolid16" >
-        <first ref="windowSolid15" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_08r" />
-       </union>
-       
-       <union name="windowSolid17" >
-        <first ref="windowSolid16" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_08l" />
-       </union>
-       
-       <union name="windowSolid18" >
-        <first ref="windowSolid17" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_09r" />
-       </union>
-       
-       <union name="windowSolid19" >
-        <first ref="windowSolid18" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_09l" />
-       </union>
-       
-       <union name="windowSolid20" >
-        <first ref="windowSolid19" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_10r" />
-       </union>
-       
-       <union name="windowSolid21" >
-        <first ref="windowSolid20" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_10l" />
-       </union>
-       
-       <union name="windowSolid22" >
-        <first ref="windowSolid21" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_11r" />
-       </union>
-       
-       <union name="windowSolid23" >
-        <first ref="windowSolid22" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_11l" />
-       </union>
-
-     <union name="windowSolid24" >
-        <first ref="windowSolid23" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_12r" />
-       </union>
-       
-       <union name="windowSolid25" >
-        <first ref="windowSolid24" />
-        <second ref="wireX" />
-        <positionref ref="wirey_position_12l" />
-       </union>
-
-  <!-- Add Y wires-->
-
-     <union name="windowSolid26" >
-        <first ref="windowSolid25" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_01r" />
-       </union>
-
-     <union name="windowSolid27" >
-        <first ref="windowSolid26" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_01l" />
-       </union>
-
-
-     <union name="windowSolid28" >
-        <first ref="windowSolid27" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_02r" />
-       </union>
-       
-      <union name="windowSolid29" >
-        <first ref="windowSolid28" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_02l" />
-       </union>
-       
-      <union name="windowSolid30" >
-        <first ref="windowSolid29" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_03r" />
-       </union>
-       
-      <union name="windowSolid31" >
-        <first ref="windowSolid30" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_03l" />
-       </union>
-       
-      <union name="windowSolid32" >
-        <first ref="windowSolid31" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_04r" />
-       </union>
-       
-      <union name="windowSolid33" >
-        <first ref="windowSolid32" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_04l" />
-       </union>
-       
-      <union name="windowSolid34" >
-        <first ref="windowSolid33" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_05r" />
-       </union>
-       
-       <union name="windowSolid35" >
-        <first ref="windowSolid34" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_05l" />
-       </union>
-       
-      <union name="windowSolid36" >
-        <first ref="windowSolid35" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_06r" />
-       </union>
-       
-      <union name="windowSolid37" >
-        <first ref="windowSolid36" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_06l" />
-       </union>
-       
-      <union name="windowSolid38" >
-        <first ref="windowSolid37" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_07r" />
-       </union>
-       
-      <union name="windowSolid39" >
-        <first ref="windowSolid38" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_07l" />
-       </union>
-       
-      <union name="windowSolid40" >
-        <first ref="windowSolid39" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_08r" />
-       </union>
-       
-      <union name="windowSolid41" >
-        <first ref="windowSolid40" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_08l" />
-       </union>
-       
-      <union name="windowSolid42" >
-        <first ref="windowSolid41" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_09r" />
-       </union>
-       
-       <union name="windowSolid43" >
-        <first ref="windowSolid42" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_09l" />
-       </union>
-       
-       <union name="windowSolid44" >
-        <first ref="windowSolid43" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_10r" />
-       </union>
-       
-       <union name="windowSolid45" >
-        <first ref="windowSolid44" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_10l" />
-       </union>
-       
-       <union name="windowSolid46" >
-        <first ref="windowSolid45" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_11r" />
-       </union>
-
-       <union name="windowSolid47" >
-        <first ref="windowSolid46" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_11l" />
-       </union>
-       
-       <union name="windowSolid48" >
-        <first ref="windowSolid47" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_12r" />
-       </union>
-
-       <union name="windowSolid" >
-        <first ref="windowSolid48" />
-        <second ref="wireY" />
-        <positionref ref="wirex_position_12l" />
-       </union>
-
-<!-- BottomVessel -->
-
-      <subtraction name="gasSolid">
-            <first ref="gasSolid1"/>
-            <second ref="windowSolid"/>
-	    <position name="gasSub1"  x="0" y="0" z="0.5*gas_length - 0.5*window_thickness"/>
-       </subtraction>
-
-<!-- UpperVessel -->
-
-        <subtraction name="gasUpperSolid">
-            <first ref="gasUpperSolid1"/>
-            <second ref="mylarSolid"/>
-	    <position name="gasSub2"  x="0" y="0" z="-0.5*gasUpperVesselLength + 0.5*mylar_thickness"/>
-       </subtraction>
+    <subtraction name="gasbelowSolid">
+            <first ref="gasbelowAuxSolid"/>
+            <second ref="cathodeSolid"/>
+	    <position name="gasbelowcathodeSub.position" z="gas_below_length*0.5-cathode_thickness*0.5" unit="mm"/>
+    </subtraction>
 
 </solids>
 
@@ -356,9 +32,32 @@
 
    <!-- {{{ Volumes definition (material and solid assignment) -->
 
+    <!--Gas (sensitive)-->
     <volume name="gasVolume">
         <materialref ref="Ar_ISO"/>
         <solidref ref="gasSolid"/>
+    </volume>
+
+    <!--Gas (below cathode)-->
+    <volume name="gasbelowVolume">
+        <materialref ref="Ar_ISO"/>
+        <solidref ref="gasbelowSolid"/>
+    </volume>
+
+    <!--Vessel and covers -->
+    <volume name="vesselVolume">
+        <materialref ref="Copper"/>
+        <solidref ref="vesselSolid"/>
+    </volume>
+
+    <volume name="vesselTopcoverVolume">
+        <materialref ref="Copper"/>
+        <solidref ref="vesselTopcoverSolid"/>
+    </volume>
+
+    <volume name="vesselBottomcoverVolume">
+        <materialref ref="Copper"/>
+        <solidref ref="vesselBottomcoverSolid"/>
     </volume>
 
     <volume name="vesselVolume">
@@ -366,42 +65,13 @@
         <solidref ref="vesselSolid"/>
     </volume>
 
-    <volume name="bottomVolume">
-        <materialref ref="Copper"/>
-        <solidref ref="bottomSolid"/>
-    </volume>
-
-   <!-- Upper  vessel -->
-
-    <volume name="gasUpperVolume">
-        <materialref ref="Air"/>
-        <solidref ref="gasUpperSolid"/>
-    </volume>
-
-    <volume name="upperVesselVolume">
-        <materialref ref="Copper"/>
-        <solidref ref="upperVesselSolid"/>
-    </volume>
-
-    <volume name="coverVolume">
-        <materialref ref="Copper"/>
-        <solidref ref="coverVesselSolid"/>
-    </volume>
-
    <!-- Cathode/Window -->
-
-    <volume name="mylarVolume">
-        <materialref ref="Mylar"/>
-        <solidref ref="mylarSolid"/>
-    </volume>
-
-       <volume name="windowVolume">
+    <volume name="cathodeVolume">
         <materialref ref="Copper"/>
-        <solidref ref="windowSolid"/>
+        <solidref ref="cathodeSolid"/>
     </volume>
 
    <!-- Readout -->
-
     <volume name="readoutVolume">
         <materialref ref="Copper"/>
         <solidref ref="readoutSolid"/>
@@ -411,54 +81,43 @@
 
     <!-- {{{ Physical volume definition (volume and position assignment) -->
 
- 
-        <volume name="World">
+    <volume name="World">
         <materialref ref="Air"/>
         <solidref ref="WorldSolid"/>
 
-        <physvol name="vessel">
-            <volumeref ref="vesselVolume"/>
-            <position name="vesselPosition"  x="0" y="0" z="0.5*VesselLength"/>
+        <physvol name="vesselTopcover">
+            <volumeref ref="vesselTopcoverVolume"/>
+            <position name="vesselTopcover.position" z="vesselTopcover_ZPosition" unit="mm"/>
         </physvol>
 
-        <physvol name="bottom">
-            <volumeref ref="bottomVolume"/>
-            <position name="bottomPosition"  x="0" y="0" z="vessel_thickness*0.5"/>
+       <physvol name="readout">
+            <volumeref ref="readoutVolume"/>
+            <position name="readout.position" z="readout_ZPosition" unit="mm"/>
         </physvol>
 
         <physvol name="gas">
             <volumeref ref="gasVolume"/>
-            <position name="gasPosition"  x="0" y="0" z="0.5*gas_length+vessel_thickness"/>
-        </physvol>
-        
-        <physvol name="cover">
-            <volumeref ref="coverVolume"/>
-            <position name="coverPosition"  x="0" y="0" z="VesselLength+UpperVesselLength-0.5*vessel_thickness"/>
+            <position name="gas.position" z="0" unit="mm"/>
         </physvol>
         
         <physvol name="cathode">
-            <volumeref ref="windowVolume"/>
-            <positionref ref="window_position"/>
+            <volumeref ref="cathodeVolume"/>
+            <position name="cathode.position" z="cathode_ZPosition" unit="mm"/>
         </physvol>
 
-       <physvol name="mylar">
-            <volumeref ref="mylarVolume"/>
-            <positionref ref="mylar_position"/>
+        <physvol name="gasbelow">
+            <volumeref ref="gasbelowVolume"/>
+            <position name="gasbelow.position" z="gasbelow_ZPosition" unit="mm"/>
         </physvol>
 
-         <physvol name="readout">
-            <volumeref ref="readoutVolume"/>
-            <positionref ref="readout_position"/>
+        <physvol name="vesselBottomcover">
+            <volumeref ref="vesselBottomcoverVolume"/>
+            <position name="vesselBottomcover.position" z="vesselBottomcover_ZPosition" unit="mm"/>
         </physvol>
 
-        <physvol name="gas2">
-            <volumeref ref="gasUpperVolume"/>
-            <position name="gasUpperPosition"  x="0" y="0" z="VesselLength+0.5*gasUpperVesselLength"/>
-        </physvol>
-
-        <physvol name="vessel2">
-            <volumeref ref="upperVesselVolume"/>
-            <position name="upperVesselPosition"  x="0" y="0" z="VesselLength+0.5*UpperVesselLength"/>
+        <physvol name="vessel">
+            <volumeref ref="vesselVolume"/>
+            <position name="vessel.position" z="vessel_ZPosition" unit="mm"/>
         </physvol>
 
    </volume>
