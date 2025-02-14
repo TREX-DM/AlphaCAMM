@@ -46,13 +46,22 @@
 		<constant name="gas_below_length" value="vessel_inner_length-gas_length"/> 
 
         <!-- Z Positions -->
-		<constant name="vesselTopcover_ZPosition" value="0.5*gas_length+0.5*vessel_thickness"/>
+		<!--<constant name="vesselTopcover_ZPosition" value="0.5*gas_length+0.5*vessel_thickness"/>
 		<constant name="readout_ZPosition" value="0.5*gas_length+0.5*readout_thickness"/>
 		<constant name="cathode_ZPosition" value="-0.5*gas_length-0.5*cathode_thickness"/>
 		<constant name="sample_ZPosition" value="-0.5*gas_length+0.5*sample_thickness"/>
 		<constant name="gasbelow_ZPosition" value="-0.5*gas_length-0.5*gas_below_length"/>
 		<constant name="vesselBottomcover_ZPosition" value="-0.5*gas_length-gas_below_length-0.5*vessel_thickness"/>
-		<constant name="vessel_ZPosition" value="0.5*gas_length-0.5*vessel_inner_length"/>
+		<constant name="vessel_ZPosition" value="0.5*gas_length-0.5*vessel_inner_length"/>-->
+
+		<constant name="vesselTopcover_ZPosition" value="0.5*vessel_thickness+readout_thicnkess"/>
+		<constant name="readout_ZPosition" value="0.5*readout_thickness"/>
+		<constant name="gas_ZPosition" value="-0.5*gas_length"/>
+		<constant name="cathode_ZPosition" value="-gas_length-0.5*cathode_thickness"/>
+		<constant name="gasbelow_ZPosition" value="-gas_length-cathode_thickness-0.5*gas_below_length"/>
+		<constant name="vesselBottomcover_ZPosition" value="-gas_length-cathode_thickness-gas_below_length-0.5*vessel_thickness"/>
+		<constant name="vessel_ZPosition" value="-0.5*vessel_inner_length"/>
+
     </define>
 
     &materials;

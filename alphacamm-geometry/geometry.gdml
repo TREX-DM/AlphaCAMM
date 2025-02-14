@@ -97,7 +97,7 @@
 
         <physvol name="gas">
             <volumeref ref="gasVolume"/>
-            <position name="gas.position" z="0" unit="mm"/>
+            <position name="gas.position" z="gas_ZPosition" unit="mm"/>
         </physvol>
         
         <physvol name="cathode">
