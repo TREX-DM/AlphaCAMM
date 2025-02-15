@@ -26,16 +26,26 @@
 	    <position name="gasbelowcathodeSub.position" z="gas_below_length*0.5-cathode_thickness*0.5" unit="mm"/>
     </subtraction>
 
+    <box name="sampleSolid" x="sampleXSize" y="sampleYSize" z="sample_thickness" lunit="mm"/>
 </solids>
 
 <structure>
 
    <!-- {{{ Volumes definition (material and solid assignment) -->
 
+    <volume name="sampleVolume">
+        <materialref  ref="G4_TEFLON"/>
+        <solidref ref="sampleSolid"/>
+    </volume>
+
     <!--Gas (sensitive)-->
     <volume name="gasVolume">
         <materialref ref="Ar_ISO"/>
         <solidref ref="gasSolid"/>
+        <physvol name="sample">
+            <volumeref ref="sampleVolume"/> <!--sample inside the gas-->
+            <position name="sample.position" z="sample_ZPosition" unit="mm"/>
+        </physvol>
     </volume>
 
     <!--Gas (below cathode)-->
